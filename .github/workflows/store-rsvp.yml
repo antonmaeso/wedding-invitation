@@ -1,0 +1,64 @@
+name: Store RSVP submissions
+
+on:
+  repository_dispatch:
+    types: [rsvp_submitted]
+
+permissions:
+  contents: write
+
+jobs:
+  append-to-csv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Append RSVP to CSV
+        env:
+          NAME: ${{ github.event.client_payload.name }}
+          EMAIL: ${{ github.event.client_payload.email }}
+          ATTENDANCE: ${{ github.event.client_payload.attendance }}
+          GUEST_COUNT: ${{ github.event.client_payload.guestCount }}
+          MESSAGE: ${{ github.event.client_payload.message }}
+          SUBMITTED_AT: ${{ github.event.client_payload.submittedAt }}
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          import os
+
+          csv_path = Path("data/rsvps.csv")
+          csv_path.parent.mkdir(parents=True, exist_ok=True)
+
+          row = {
+            "submitted_at": os.environ.get("SUBMITTED_AT", ""),
+            "name": os.environ.get("NAME", ""),
+            "email": os.environ.get("EMAIL", ""),
+            "attendance": os.environ.get("ATTENDANCE", ""),
+            "guest_count": os.environ.get("GUEST_COUNT", ""),
+            "message": os.environ.get("MESSAGE", ""),
+          }
+
+          write_header = not csv_path.exists() or csv_path.stat().st_size == 0
+          with csv_path.open("a", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+              f,
+              fieldnames=["submitted_at", "name", "email", "attendance", "guest_count", "message"],
+            )
+            if write_header:
+              writer.writeheader()
+            writer.writerow(row)
+          PY
+
+      - name: Commit CSV update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rsvps.csv
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: store RSVP submission"
+          git push
