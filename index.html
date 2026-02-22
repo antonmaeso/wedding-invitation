@@ -8,15 +8,16 @@
 
         <style>
             :root {
-                --bg: #20181a;
-                --text: rgba(255, 248, 238, 0.94);
-                --muted: rgba(255, 248, 238, 0.78);
-                --card: rgba(255, 255, 255, 0.08);
-                --border: rgba(255, 255, 255, 0.18);
-                --accent: #eeb197;
-                --accent-soft: #f7ddd0;
+                --bg: #0a1020;
+                --bg-alt: #1a2240;
+                --text: rgba(233, 244, 255, 0.96);
+                --muted: rgba(201, 221, 245, 0.78);
+                --card: rgba(13, 22, 44, 0.86);
+                --border: rgba(174, 204, 255, 0.28);
+                --accent: #a4b8ff;
+                --accent-soft: #f8bfd6;
                 --radius: 20px;
-                --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+                --shadow: 0 25px 70px rgba(4, 8, 22, 0.62);
                 --sans:
                     system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
                 --serif: ui-serif, Georgia, "Times New Roman", serif;
@@ -25,6 +26,7 @@
             @media (prefers-color-scheme: light) {
                 :root {
                     --bg: #f9f2ea;
+                    --bg-alt: #ffe3d4;
                     --text: rgba(55, 34, 39, 0.92);
                     --muted: rgba(55, 34, 39, 0.72);
                     --card: rgba(17, 24, 39, 0.06);
@@ -44,16 +46,18 @@
                 color: var(--text);
                 background:
                     radial-gradient(
-                        1000px 700px at 10% 10%,
-                        rgba(242, 180, 160, 0.3),
+                        1100px 760px at 10% 10%,
+                        rgba(145, 189, 255, 0.3),
                         transparent 55%
                     ),
                     radial-gradient(
-                        900px 700px at 90% 20%,
-                        rgba(230, 196, 176, 0.22),
+                        1000px 760px at 90% 15%,
+                        rgba(248, 191, 214, 0.2),
                         transparent 55%
                     ),
+                    linear-gradient(160deg, var(--bg), var(--bg-alt)),
                     var(--bg);
+                min-height: 100vh;
             }
 
             .wrap {
@@ -66,12 +70,13 @@
                 background: linear-gradient(
                     180deg,
                     var(--card),
-                    rgba(0, 0, 0, 0.06)
+                    rgba(9, 15, 33, 0.72)
                 );
                 border: 1px solid var(--border);
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
                 overflow: hidden;
+                backdrop-filter: blur(4px);
             }
 
             header {
@@ -108,8 +113,8 @@
                 border: 1px solid var(--border);
                 background: linear-gradient(
                     180deg,
-                    rgba(255, 255, 255, 0.28),
-                    rgba(255, 255, 255, 0.07)
+                    rgba(189, 218, 255, 0.36),
+                    rgba(248, 191, 214, 0.14)
                 );
             }
 
@@ -144,7 +149,11 @@
                 border: 1px solid var(--border);
                 border-radius: 16px;
                 padding: 14px;
-                background: rgba(0, 0, 0, 0.08);
+                background: linear-gradient(
+                    165deg,
+                    rgba(124, 169, 255, 0.2),
+                    rgba(248, 191, 214, 0.12)
+                );
                 text-align: left;
             }
 
@@ -177,15 +186,15 @@
                 border: 1px solid var(--border);
                 background: linear-gradient(
                     180deg,
-                    rgba(238, 177, 151, 0.5),
-                    rgba(238, 177, 151, 0.2)
+                    rgba(164, 184, 255, 0.68),
+                    rgba(248, 191, 214, 0.28)
                 );
                 color: var(--text);
                 padding: 12px 20px;
                 border-radius: 999px;
                 font-size: 15px;
                 cursor: pointer;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+                box-shadow: 0 12px 30px rgba(10, 20, 45, 0.45);
                 transition:
                     transform 0.08s ease,
                     box-shadow 0.2s ease;
