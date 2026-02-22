@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Anton & Gisela — Wedding</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+
+        <style>
+            :root {
+                --bg: #0b1220;
+                --text: rgba(255, 255, 255, 0.92);
+                --muted: rgba(255, 255, 255, 0.72);
+                --card: rgba(255, 255, 255, 0.08);
+                --border: rgba(255, 255, 255, 0.14);
+                --accent: #f5c26b;
+                --radius: 20px;
+                --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+                --sans:
+                    system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+                --serif: ui-serif, Georgia, "Times New Roman", serif;
+            }
+
+            @media (prefers-color-scheme: light) {
+                :root {
+                    --bg: #f7f4ef;
+                    --text: rgba(17, 24, 39, 0.92);
+                    --muted: rgba(17, 24, 39, 0.72);
+                    --card: rgba(17, 24, 39, 0.06);
+                    --border: rgba(17, 24, 39, 0.14);
+                    --shadow: 0 18px 60px rgba(17, 24, 39, 0.14);
+                }
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                font-family: var(--sans);
+                color: var(--text);
+                background:
+                    radial-gradient(
+                        1000px 700px at 10% 10%,
+                        rgba(245, 194, 107, 0.22),
+                        transparent 55%
+                    ),
+                    radial-gradient(
+                        900px 700px at 90% 20%,
+                        rgba(154, 230, 180, 0.18),
+                        transparent 55%
+                    ),
+                    var(--bg);
+            }
+
+            .wrap {
+                max-width: 980px;
+                margin: 0 auto;
+                padding: 16px 12px 32px;
+            }
+
+            .card {
+                background: linear-gradient(
+                    180deg,
+                    var(--card),
+                    rgba(0, 0, 0, 0.06)
+                );
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                overflow: hidden;
+            }
+
+            header {
+                padding: 30px 18px 26px;
+                text-align: center;
+            }
+
+            h1 {
+                margin: 0;
+                font-family: var(--serif);
+                font-size: clamp(28px, 5vw, 44px);
+                letter-spacing: 0.6px;
+            }
+
+            .subtitle {
+                margin: 6px 0 18px;
+                color: var(--muted);
+                font-size: 15px;
+            }
+
+            .info {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+                margin-top: 18px;
+            }
+
+            @media (max-width: 700px) {
+                .info {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .infoBox {
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 14px;
+                background: rgba(0, 0, 0, 0.08);
+                text-align: left;
+            }
+
+            @media (prefers-color-scheme: light) {
+                .infoBox {
+                    background: rgba(255, 255, 255, 0.55);
+                }
+            }
+
+            .infoBox h2 {
+                margin: 0 0 6px;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 1.2px;
+                color: var(--muted);
+            }
+
+            .infoBox p {
+                margin: 0;
+                font-size: 15px;
+                line-height: 1.55;
+            }
+
+            .cta {
+                margin-top: 22px;
+            }
+
+            .btn {
+                appearance: none;
+                border: 1px solid var(--border);
+                background: linear-gradient(
+                    180deg,
+                    rgba(245, 194, 107, 0.35),
+                    rgba(245, 194, 107, 0.18)
+                );
+                color: var(--text);
+                padding: 12px 20px;
+                border-radius: 999px;
+                font-size: 15px;
+                cursor: pointer;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+                transition:
+                    transform 0.08s ease,
+                    box-shadow 0.2s ease;
+            }
+
+            .btn:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            /* FORM */
+            .formWrap {
+                display: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .formWrap.visible {
+                display: block;
+            }
+
+            .formHeader {
+                padding: 16px 18px 12px;
+                text-align: center;
+                font-size: 14px;
+                color: var(--muted);
+            }
+
+            .frame {
+                position: relative;
+                width: 100%;
+                min-height: min(1100px, 90vh);
+            }
+
+            iframe {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrap">
+            <main class="card">
+                <!-- TOP INFO -->
+                <header>
+                    <h1>Anton &amp; Gisela</h1>
+                    <p class="subtitle">
+                        We’re getting married — we’d love you to celebrate with
+                        us
+                    </p>
+
+                    <div class="info">
+                        <div class="infoBox">
+                            <h2>Ceremony</h2>
+                            <p>
+                                <strong>Church:</strong> St Mary’s Church<br />
+                                <strong>Location:</strong> 61 York Place,
+                                Edinburgh EH1 3JD<br />
+                                <strong>Time:</strong> 2:00 PM
+                            </p>
+                        </div>
+
+                        <div class="infoBox">
+                            <h2>Evening Meal &amp; Celebration</h2>
+                            <p>
+                                <strong>Venue:</strong> The Old Hall<br />
+                                <strong>Location:</strong> 123 Wedding Lane,
+                                Edinburgh EH1 1AA<br />
+                                <strong>Time:</strong> From 6:30 PM
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="cta">
+                        <button class="btn" id="reserveBtn">
+                            Reserve my place
+                        </button>
+                    </div>
+                </header>
+
+                <!-- FORM (HIDDEN INITIALLY) -->
+                <section class="formWrap" id="formSection">
+                    <div class="formHeader">Please complete the form below</div>
+
+                    <div class="frame">
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSeWQUXZ44vHfdrQe5sTkPieZKpG96ZtNUXxB1wXnicvg5tKFw/viewform?embedded=true"
+                            loading="lazy"
+                            title="Wedding reservation form"
+                        >
+                            Loading…
+                        </iframe>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script>
+            const btn = document.getElementById("reserveBtn");
+            const form = document.getElementById("formSection");
+
+            btn.addEventListener("click", () => {
+                form.classList.add("visible");
+                form.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        </script>
+    </body>
+</html>
