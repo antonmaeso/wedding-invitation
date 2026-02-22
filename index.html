@@ -8,12 +8,13 @@
 
         <style>
             :root {
-                --bg: #0b1220;
-                --text: rgba(255, 255, 255, 0.92);
-                --muted: rgba(255, 255, 255, 0.72);
+                --bg: #20181a;
+                --text: rgba(255, 248, 238, 0.94);
+                --muted: rgba(255, 248, 238, 0.78);
                 --card: rgba(255, 255, 255, 0.08);
-                --border: rgba(255, 255, 255, 0.14);
-                --accent: #f5c26b;
+                --border: rgba(255, 255, 255, 0.18);
+                --accent: #eeb197;
+                --accent-soft: #f7ddd0;
                 --radius: 20px;
                 --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
                 --sans:
@@ -23,12 +24,14 @@
 
             @media (prefers-color-scheme: light) {
                 :root {
-                    --bg: #f7f4ef;
-                    --text: rgba(17, 24, 39, 0.92);
-                    --muted: rgba(17, 24, 39, 0.72);
+                    --bg: #f9f2ea;
+                    --text: rgba(55, 34, 39, 0.92);
+                    --muted: rgba(55, 34, 39, 0.72);
                     --card: rgba(17, 24, 39, 0.06);
                     --border: rgba(17, 24, 39, 0.14);
                     --shadow: 0 18px 60px rgba(17, 24, 39, 0.14);
+                    --accent: #d98c6f;
+                    --accent-soft: #f2cbb8;
                 }
             }
 
@@ -42,12 +45,12 @@
                 background:
                     radial-gradient(
                         1000px 700px at 10% 10%,
-                        rgba(245, 194, 107, 0.22),
+                        rgba(242, 180, 160, 0.3),
                         transparent 55%
                     ),
                     radial-gradient(
                         900px 700px at 90% 20%,
-                        rgba(154, 230, 180, 0.18),
+                        rgba(230, 196, 176, 0.22),
                         transparent 55%
                     ),
                     var(--bg);
@@ -76,6 +79,14 @@
                 text-align: center;
             }
 
+            .kicker {
+                margin: 0 0 8px;
+                font-size: 12px;
+                letter-spacing: 2.5px;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+
             h1 {
                 margin: 0;
                 font-family: var(--serif);
@@ -87,6 +98,33 @@
                 margin: 6px 0 18px;
                 color: var(--muted);
                 font-size: 15px;
+            }
+
+            .photo {
+                margin: 12px auto 18px;
+                width: min(100%, 760px);
+                padding: 10px;
+                border-radius: 18px;
+                border: 1px solid var(--border);
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.28),
+                    rgba(255, 255, 255, 0.07)
+                );
+            }
+
+            .photo img {
+                width: 100%;
+                max-height: 420px;
+                object-fit: cover;
+                border-radius: 12px;
+                display: block;
+            }
+
+            .photo figcaption {
+                margin-top: 10px;
+                font-size: 13px;
+                color: var(--muted);
             }
 
             .info {
@@ -139,8 +177,8 @@
                 border: 1px solid var(--border);
                 background: linear-gradient(
                     180deg,
-                    rgba(245, 194, 107, 0.35),
-                    rgba(245, 194, 107, 0.18)
+                    rgba(238, 177, 151, 0.5),
+                    rgba(238, 177, 151, 0.2)
                 );
                 color: var(--text);
                 padding: 12px 20px;
@@ -197,10 +235,22 @@
                 <!-- TOP INFO -->
                 <header>
                     <h1>Anton &amp; Gisela</h1>
+                    <p class="kicker">Together with their families</p>
                     <p class="subtitle">
                         We’re getting married — we’d love you to celebrate with
                         us
                     </p>
+
+                    <figure class="photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=1400&q=80"
+                            alt="Anton and Gisela sharing a moment together"
+                        />
+                        <figcaption>
+                            Add your own photo by replacing this image URL with
+                            your favorite picture together.
+                        </figcaption>
+                    </figure>
 
                     <div class="info">
                         <div class="infoBox">
@@ -259,4 +309,3 @@
         </script>
     </body>
 </html>
-
